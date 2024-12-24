@@ -8,6 +8,9 @@ class ChatApp {
         this.initializeSampleData();
         this.attachEventListeners();
         this.setupSocketListeners();
+        
+        // Store original chat area content
+        this.originalChatAreaContent = this.chatArea.innerHTML;
     }
 
     initializeElements() {
@@ -92,10 +95,49 @@ class ChatApp {
         if (type === 'chats') {
             this.chatItems.style.display = 'block';
             this.groupItems.style.display = 'none';
+            this.chatArea.innerHTML = this.originalChatAreaContent;
         } else if (type === 'groups') {
             this.chatItems.style.display = 'none';
             this.groupItems.style.display = 'block';
+            this.chatArea.innerHTML = this.originalChatAreaContent;
+        } else if (type === 'explore') {
+            this.chatItems.style.display = 'none';
+            this.groupItems.style.display = 'none';
+            this.showExploreSection();
         }
+    }
+
+    showExploreSection() {
+        this.chatArea.innerHTML = `
+            <div class="explore-section">
+                <header class="explore-header">
+                    <h2>Explore</h2>
+                    <div class="explore-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search languages, topics, or users...">
+                    </div>
+                </header>
+                <div class="explore-content">
+                    <section class="trending-languages">
+                        <h3>Trending Languages</h3>
+                        <div class="language-cards">
+                            <div class="language-card">
+                                <img src="images/flags/spanish.png" alt="Spanish">
+                                <h4>Spanish</h4>
+                                <p>1.2k active users</p>
+                            </div>
+                            <!-- Add more language cards as needed -->
+                        </div>
+                    </section>
+                    <section class="language-communities">
+                        <h3>Popular Communities</h3>
+                        <div class="community-list">
+                            <!-- Add community items -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+        `;
     }
 
     setupSocketListeners() {
