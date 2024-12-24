@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tranzio - Multilingual Messaging Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- New wrapper for fixed elements -->
+            <div class="sidebar-fixed">
+                <!-- User Profile Section -->
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1.5rem; gap: 1rem; border-bottom: 1px solid var(--border-color);">
+                    <span class="logo">
+                        <img src="images/2.png" alt="Tranzio Logo">
+                    </span>
+                    <div class="profile-section">
+                        <div class="user-avatar">
+                            <img src="images/3.png" alt="User Avatar" id="userAvatar">
+                            <span class="status-indicator online"></span>
+                        </div>
+                        <div class="user-info">
+                            <h3 id="userName">Stephen Gyan</h3>
+                            <p id="userStatus">Online</p>
+                            <p id="userLanguage" class="user-language">
+                                <i class="fas fa-globe"></i>
+                                <span>English</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="sidebar-nav">
+                    <button class="nav-item active">
+                        <i class="fas fa-comments"></i>
+                        <span>Chats</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="fas fa-users"></i>
+                        <span>Groups</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </button>
+                </nav>
+
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search conversations...">
+                </div>
+            </div>
+
+            <!-- Chat List -->
+            <div class="chat-list">
+                <!-- Chat Items -->
+                <div class="chat-items">
+                    <!-- Individual chat items will be dynamically added here -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area">
+            <!-- Chat Header -->
+            <header class="chat-header">
+                <div class="chat-info">
+                    <div class="chat-participant-info">
+                        <div class="participant-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Chat Avatar" id="chatAvatar">
+                            <span class="status-indicator online"></span>
+                        </div>
+                        <div>
+                            <h2 id="chatName">James Chen</h2>
+                            <p id="chatStatus">
+                                <span id="participantCount">Translated from Chinese •</span> <br>
+                                <span id="originalMessage">Tap to see original message?</span> 
+                                <span id="activeStatus">Offline</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-actions">
+                    <button title="Video Call">
+                        <i class="fas fa-video"></i>
+                    </button>
+                    <button title="Voice Call">
+                        <i class="fas fa-phone"></i>
+                    </button>
+                    <button title="More Options">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Messages Container -->
+            <div class="messages-container">
+                <div id="typingIndicator" class="typing-indicator hidden">
+                    <span class="dots">
+                        <span></span><span></span><span></span>
+                    </span>
+                    <span class="typing-text"></span>
+                </div>
+                <!-- Messages will be dynamically added here -->
+            </div>
+
+            <!-- Message Input Area -->
+            <div class="message-input-area">
+                <button class="attachment-btn">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+                <div class="message-input">
+                    <input type="text" placeholder="Type your message...">
+                    <div class="input-actions">
+                        <button title="Emoji">
+                            <i class="far fa-smile"></i>
+                        </button>
+                        <button title="Translate">
+                            <i class="fas fa-language"></i>
+                        </button>
+                    </div>
+                </div>
+                <button class="send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
