@@ -2,7 +2,7 @@
     "name": "Tranzio",
     "short_name": "Tranzio",
     "description": "Break language barriers with real-time chat translation",
-    "start_url": "https://smartlinkco.github.io/tranzio/",
+    "start_url": "https://tranzio.netlify.app/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#5e17eb",
