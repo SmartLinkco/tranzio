@@ -132,6 +132,41 @@
                 </div>
             </header>
 
+            <!-- Add settings panel here -->
+            <div class="settings-panel" style="display: none;">
+                <div class="settings-header">
+                    <button class="back-btn">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h2>Settings</h2>
+                </div>
+                <div class="settings-content">
+                    <div class="profile-settings">
+                        <div class="profile-image">
+                            <img src="images/3.png" alt="Profile Picture">
+                            <button class="change-photo-btn">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <div class="profile-info">
+                            <input type="text" id="profileName" placeholder="Your Name" value="John Doe">
+                            <input type="text" id="profileStatus" placeholder="Status" value="Available">
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Appearance</h3>
+                        <div class="theme-selector">
+                            <label>Theme</label>
+                            <select id="themeSelect">
+                                <option value="system">System Default</option>
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Messages Container -->
             <div class="messages-container">
                 <div id="typingIndicator" class="typing-indicator hidden">

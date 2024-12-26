@@ -775,3 +775,118 @@ html {
         max-width: 85%;
     }
 }
+
+/* Settings Panel Styles */
+.settings-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--sidebar-color);
+    z-index: 100;
+    display: none;
+}
+
+.settings-header {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.settings-content {
+    padding: 1.5rem;
+}
+
+.profile-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.profile-image {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.change-photo-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    color: white;
+    cursor: pointer;
+}
+
+.profile-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.profile-info input {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+}
+
+.settings-section {
+    margin-top: 2rem;
+}
+
+.settings-section h3 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.theme-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+}
+
+.theme-selector select {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-primary);
+}
+
+/* Hide messages container when settings is open */
+.settings-panel.active + .messages-container {
+    display: none;
+}
+
+/* Hide message input when settings is open */
+.settings-panel.active ~ .message-input-area {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .settings-panel {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+}

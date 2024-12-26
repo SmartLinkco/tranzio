@@ -37,6 +37,16 @@ class ChatApp {
 
         // Handle virtual keyboard
         this.handleVirtualKeyboard();
+
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            this.handleThemeChange(savedTheme);
+        } else {
+            // Check system preference
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            this.handleThemeChange(prefersDark ? 'dark' : 'light');
+        }
     }
 
     initializeElements() {
@@ -77,6 +87,12 @@ class ChatApp {
         // Insert back button into chat header
         const chatHeader = document.querySelector('.chat-header');
         chatHeader.insertBefore(this.backButton, chatHeader.firstChild);
+
+        // Add settings panel elements
+        this.settingsBtn = document.querySelector('.settings-btn');
+        this.settingsPanel = document.querySelector('.settings-panel');
+        this.settingsBackBtn = document.querySelector('.settings-panel .back-btn');
+        this.themeSelect = document.getElementById('themeSelect');
     }
 
     attachEventListeners() {
@@ -108,6 +124,14 @@ class ChatApp {
         if (this.translateButton) {
             this.translateButton.addEventListener('click', () => this.toggleTranslation());
         }
+
+        // Settings panel events
+        this.settingsBtn.addEventListener('click', () => this.toggleSettings());
+        this.settingsBackBtn.addEventListener('click', () => this.toggleSettings());
+        this.themeSelect.addEventListener('change', (e) => this.handleThemeChange(e.target.value));
+        
+        // Initialize theme
+        this.initializeTheme();
     }
 
     handleNavigation(e) {
@@ -694,6 +718,87 @@ class ChatApp {
         messageInput.addEventListener('blur', () => {
             document.body.classList.remove('virtual-keyboard-open');
         });
+    }
+
+    toggleSettings() {
+        const isVisible = this.settingsPanel.style.display === 'block';
+        
+        // Toggle settings panel
+        this.settingsPanel.style.display = isVisible ? 'none' : 'block';
+        this.settingsPanel.classList.toggle('active');
+        
+        // Show chat area and settings on mobile
+        if (!isVisible) {
+            this.chatArea.classList.add('active'); // Ensure chat area is visible on mobile
+            this.messagesContainer.style.display = 'none';
+            if (this.messageInput) {
+                this.messageInput.parentElement.style.display = 'none';
+            }
+        } else {
+            if (!this.activeChat) {
+                this.chatArea.classList.remove('active'); // Hide chat area if no active chat
+            }
+            this.messagesContainer.style.display = 'block';
+            if (this.messageInput) {
+                this.messageInput.parentElement.style.display = 'flex';
+            }
+        }
+    }
+
+    initializeTheme() {
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            this.themeSelect.value = savedTheme;
+            this.handleThemeChange(savedTheme);
+        } else {
+            this.themeSelect.value = 'system';
+        }
+    }
+
+    handleThemeChange(theme) {
+        const root = document.documentElement;
+        const logo = document.querySelector('.logo img');
+        
+        // Remove any existing theme classes
+        document.body.classList.remove('theme-light', 'theme-dark');
+        
+        if (theme === 'system') {
+            // Use system preference
+            localStorage.removeItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.body.classList.add(prefersDark ? 'theme-dark' : 'theme-light');
+            logo.src = prefersDark ? logo.dataset.darkSrc : logo.dataset.lightSrc;
+            this.applyThemeColors(prefersDark ? 'dark' : 'light');
+        } else {
+            // Set specific theme
+            localStorage.setItem('theme', theme);
+            document.body.classList.add(`theme-${theme}`);
+            logo.src = theme === 'dark' ? logo.dataset.darkSrc : logo.dataset.lightSrc;
+            this.applyThemeColors(theme);
+        }
+    }
+
+    applyThemeColors(theme) {
+        const root = document.documentElement;
+        
+        if (theme === 'dark') {
+            root.style.setProperty('--background-color', '#1a1a1a');
+            root.style.setProperty('--sidebar-color', '#242424');
+            root.style.setProperty('--text-primary', '#e2e8f0');
+            root.style.setProperty('--text-secondary', '#94a3b8');
+            root.style.setProperty('--border-color', '#2d2d2d');
+            root.style.setProperty('--hover-color', '#2f2f2f');
+            root.style.setProperty('--shadow', '0 4px 6px -1px rgb(0 0 0 / 0.3)');
+        } else {
+            root.style.setProperty('--background-color', '#f0f2f5');
+            root.style.setProperty('--sidebar-color', '#ffffff');
+            root.style.setProperty('--text-primary', '#1e293b');
+            root.style.setProperty('--text-secondary', '#64748b');
+            root.style.setProperty('--border-color', '#e2e8f0');
+            root.style.setProperty('--hover-color', '#f1f5f9');
+            root.style.setProperty('--shadow', '0 4px 6px -1px rgb(0 0 0 / 0.1)');
+        }
     }
 }
 
