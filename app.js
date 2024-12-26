@@ -791,7 +791,7 @@ class ChatApp {
             root.style.setProperty('--border-color', '#2d2d2d');
             root.style.setProperty('--hover-color', '#2f2f2f');
             root.style.setProperty('--shadow', '0 4px 6px -1px rgb(0 0 0 / 0.3)');
-            logo.src = 'Tranzio dark.png';
+            logo.src = 'images/Tranzio dark.png';
         } else {
             root.style.setProperty('--background-color', '#f0f2f5');
             root.style.setProperty('--sidebar-color', '#ffffff');
