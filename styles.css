@@ -271,6 +271,30 @@ body {
     z-index: 10;
 }
 
+@media (max-width: 768px) {
+    .message-input-area {
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+    
+    /* Add styles for when virtual keyboard is visible */
+    .virtual-keyboard-open .message-input-area {
+        position: fixed;
+        bottom: 0;
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+    }
+}
+
+/* Add these new styles for iOS devices */
+@supports (-webkit-touch-callout: none) {
+    .message-input-area {
+        padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+    }
+}
+
 .message-input {
     flex: 1;
     position: relative;

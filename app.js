@@ -34,6 +34,9 @@ class ChatApp {
         } else {
             logo.src = logo.dataset.lightSrc;
         }
+
+        // Handle virtual keyboard
+        this.handleVirtualKeyboard();
     }
 
     initializeElements() {
@@ -674,6 +677,22 @@ class ChatApp {
         // Remove active state from chat items
         document.querySelectorAll('.chat-item').forEach(item => {
             item.classList.remove('active');
+        });
+    }
+
+    handleVirtualKeyboard() {
+        const messageInput = document.querySelector('.message-input input');
+        
+        messageInput.addEventListener('focus', () => {
+            document.body.classList.add('virtual-keyboard-open');
+            // Scroll to the input after a short delay to ensure the keyboard is fully shown
+            setTimeout(() => {
+                messageInput.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        });
+
+        messageInput.addEventListener('blur', () => {
+            document.body.classList.remove('virtual-keyboard-open');
         });
     }
 }
