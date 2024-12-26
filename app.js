@@ -707,9 +707,14 @@ class ChatApp {
     handleVirtualKeyboard() {
         const messageInput = document.querySelector('.message-input input');
         
-        messageInput.addEventListener('focus', () => {
+        // Prevent zoom on focus
+        messageInput.addEventListener('focus', (e) => {
+            // Prevent default zoom behavior
             document.body.classList.add('virtual-keyboard-open');
-            // Scroll to the input after a short delay to ensure the keyboard is fully shown
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Ensure input is visible
             setTimeout(() => {
                 messageInput.scrollIntoView({ behavior: 'smooth' });
             }, 300);
@@ -717,6 +722,11 @@ class ChatApp {
 
         messageInput.addEventListener('blur', () => {
             document.body.classList.remove('virtual-keyboard-open');
+        });
+
+        // Prevent zoom gestures
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
         });
     }
 
