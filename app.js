@@ -781,6 +781,7 @@ class ChatApp {
 
     applyThemeColors(theme) {
         const root = document.documentElement;
+        const logo = document.querySelector('.logo img');
         
         if (theme === 'dark') {
             root.style.setProperty('--background-color', '#1a1a1a');
@@ -790,6 +791,7 @@ class ChatApp {
             root.style.setProperty('--border-color', '#2d2d2d');
             root.style.setProperty('--hover-color', '#2f2f2f');
             root.style.setProperty('--shadow', '0 4px 6px -1px rgb(0 0 0 / 0.3)');
+            logo.src = 'Tranzio dark.png';
         } else {
             root.style.setProperty('--background-color', '#f0f2f5');
             root.style.setProperty('--sidebar-color', '#ffffff');
