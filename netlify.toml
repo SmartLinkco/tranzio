@@ -1,0 +1,26 @@
+[build]
+  publish = "/"
+  command = "# no build command needed"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[headers]
+  # Headers to enable PWA functionality
+  for = "/manifest.json"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Content-Type = "application/json"
+
+  for = "/sw.js"
+    [headers.values]
+    Cache-Control = "no-cache"
+    Content-Type = "application/javascript"
+
+  for = "/*"
+    [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
