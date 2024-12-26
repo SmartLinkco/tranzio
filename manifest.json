@@ -1,10 +1,10 @@
 {
-    "name": "Tranzio - Multilingual Messaging",
+    "name": "Tranzio",
     "short_name": "Tranzio",
     "description": "Break language barriers with real-time chat translation",
     "start_url": "https://smartlinkco.github.io/tranzio/",
     "display": "standalone",
-    "background_color": "#f0f2f5",
+    "background_color": "#ffffff",
     "theme_color": "#5e17eb",
     "orientation": "any",
     "icons": [
