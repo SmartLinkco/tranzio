@@ -6,9 +6,12 @@
 }
 
 :root {
+    /* Core colors */
     --primary-color: #5e17eb;
     --secondary-color: #3b82f6;
-    --background-color: #f8fafc;
+    
+    /* Light theme (default) */
+    --background-color: #f0f2f5;  /* Neutral gray, similar to Facebook/LinkedIn */
     --sidebar-color: #ffffff;
     --text-primary: #1e293b;
     --text-secondary: #64748b;
@@ -18,11 +21,26 @@
     --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1a1a1a;  /* Dark but not pure black */
+        --sidebar-color: #242424;
+        --text-primary: #e2e8f0;
+        --text-secondary: #94a3b8;
+        --border-color: #2d2d2d;
+        --hover-color: #2f2f2f;
+        --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+    }
+}
+
+/* Ensure smooth transitions between themes */
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--text-primary);
     background-color: var(--background-color);
     line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* App Container */
@@ -493,7 +511,7 @@ body {
 .message-content {
     padding: 0.75rem 1rem;
     border-radius: 1rem;
-    background-color: var(--border-color);
+    background-color: var(--sidebar-color);
     max-width: 70%;
 }
 
@@ -703,4 +721,33 @@ body {
     flex-direction: column;
     gap: 0.25rem;
     align-items: flex-end;
+}
+
+/* Add these to your existing CSS */
+html {
+    touch-action: manipulation;
+    -webkit-text-size-adjust: 100%;
+}
+
+.messages-container {
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Improve text readability when zoomed */
+@media screen and (max-resolution: 150dpi) {
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Adjust layout for different zoom levels */
+@media (max-width: 320px), (min-resolution: 2dppx) {
+    .app-container {
+        font-size: 14px;
+    }
+    
+    .message-content {
+        max-width: 85%;
+    }
 }

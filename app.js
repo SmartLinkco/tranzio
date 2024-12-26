@@ -1,5 +1,21 @@
 class ChatApp {
     constructor() {
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('ServiceWorker registration successful');
+                })
+                .catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+        }
+
+        // Enable zooming with pinch gestures
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+
         this.socket = io('http://localhost:3000');
         this.currentUser = null;
         this.activeChat = null;
