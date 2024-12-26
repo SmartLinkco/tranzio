@@ -2,7 +2,7 @@
     "name": "Tranzio - Multilingual Messaging",
     "short_name": "Tranzio",
     "description": "Break language barriers with real-time chat translation",
-    "start_url": "/",
+    "start_url": "https://smartlinkco.github.io/tranzio/",
     "display": "standalone",
     "background_color": "#f0f2f5",
     "theme_color": "#5e17eb",
@@ -62,7 +62,7 @@
             "name": "New Chat",
             "short_name": "New Chat",
             "description": "Start a new conversation",
-            "url": "/?action=new-chat",
+            "url": "https://smartlinkco.github.io/tranzio/?action=new-chat",
             "icons": [{ "src": "images/Tranzio (2).png", "sizes": "192x192" }]
         }
     ]
