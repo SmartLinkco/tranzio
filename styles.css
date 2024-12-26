@@ -683,7 +683,7 @@ body {
     border: none;
     border-radius: 0.5rem;
     color: var(--text-primary);
-    font-size: 0.875rem;
+    font-size: 0.7rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
     justify-content: flex-end;
