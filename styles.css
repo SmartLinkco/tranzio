@@ -170,6 +170,8 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 0.5rem;
     font-size: 0.875rem;
+    background-color: var(--background-color);
+    color: var(--text-primary);
 }
 
 .search-bar i {
@@ -305,12 +307,15 @@ body {
 }
 
 .message-input input {
-    flex: 1;
+    width: 100%;
     border: none;
     background: none;
-    outline: none;
-    font-size: 0.875rem;
-    padding-right: 6rem;
+    padding: 0.75rem 3.5rem 0.75rem 1rem;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    max-height: 100px;
+    resize: none;
+    color: var(--text-primary);
 }
 
 .input-actions {
@@ -889,4 +894,27 @@ html {
         width: 100%;
         height: 100%;
     }
+}
+
+/* Dark theme specific styles */
+.theme-dark .search-bar input {
+    background-color: #242424;
+    color: #e2e8f0;
+    border-color: #2d2d2d;
+}
+
+.theme-dark .message-input {
+    background-color: #242424;
+}
+
+.theme-dark .message-input input {
+    color: #e2e8f0;
+}
+
+.theme-dark .message-input input::placeholder {
+    color: #94a3b8;
+}
+
+.theme-dark .search-bar input::placeholder {
+    color: #94a3b8;
 }
