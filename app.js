@@ -27,6 +27,13 @@ class ChatApp {
         
         // Store original chat area content
         this.originalChatAreaContent = this.chatArea.innerHTML;
+
+        const logo = document.querySelector('.logo img');
+        if (darkThemeEnabled) {
+            logo.src = logo.dataset.darkSrc;
+        } else {
+            logo.src = logo.dataset.lightSrc;
+        }
     }
 
     initializeElements() {
