@@ -46,9 +46,8 @@
     <div class="app-container">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <!-- New wrapper for fixed elements -->
+            <!-- User Profile Section as the only fixed element -->
             <div class="sidebar-fixed">
-                <!-- User Profile Section -->
                 <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1.5rem; gap: 1rem; border-bottom: 1px solid var(--border-color);">
                     <span class="logo" style="cursor: pointer;" onclick="window.location.reload()">
                         <img src="images/2.png" alt="Tranzio Logo" data-light-src="images/2.png" data-dark-src="images/Tranzio dark.png">
@@ -66,30 +65,26 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Navigation -->
-                <nav class="sidebar-nav">
-                    <button class="nav-item active">
-                        <i class="fas fa-comments"></i>
-                        <span>Chats</span>
-                    </button>
-                    <button class="nav-item">
-                        <i class="fas fa-users"></i>
-                        <span>Groups</span>
-                    </button>
-                    <button class="nav-item">
-                        <i class="fas fa-compass"></i>
-                        <span>Explore</span>
-                    </button>
-                </nav>
-
-                <!-- Search Bar -->
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search conversations...">
-                </div>
             </div>
-
+            <!-- Navigation and other elements -->
+            <nav class="sidebar-nav">
+                <button class="nav-item active">
+                    <i class="fas fa-comments"></i>
+                    <span>Chats</span>
+                </button>
+                <button class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Groups</span>
+                </button>
+                <button class="nav-item">
+                    <i class="fas fa-compass"></i>
+                    <span>Explore</span>
+                </button>
+            </nav>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search conversations...">
+            </div>
             <!-- Chat List -->
             <div class="chat-list">
                 <!-- Chat Items -->

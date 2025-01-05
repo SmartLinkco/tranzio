@@ -69,6 +69,12 @@ body {
     background-color: var(--sidebar-color);
     z-index: 10;
     border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0;
+}
+
+/* Remove sticky positioning from other elements */
+.sidebar-nav, .search-bar {
+    position: static;
 }
 
 /* Profile Section */
